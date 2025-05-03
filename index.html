@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZapCash Lite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>ZapCash Lite</h1>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <nav id="nav-menu" class="nav-menu">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="referral.html">Referral</a>
+    <a href="leaderboard.html">Leaderboard</a>
+    <a href="withdraw.html">Withdraw</a>
+    <a href="login.html">Login/Sign In</a>
+  </nav>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Earn Real Rewards Online</h2>
+      <p>Complete simple tasks like following, watching videos, and referring friends to earn cash points.</p>
+      <div class="hero-buttons">
+        <a href="signup.html" class="button">Get Started</a>
+        <a href="login.html" class="button">Login</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 ZapCash Lite. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      menu.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>

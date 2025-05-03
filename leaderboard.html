@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <title>Leaderboard</title>
+</head>
+<body>
+    <header class="header">
+        <h1>ZapCash Lite</h1>
+    </header>
+
+    <div class="leaderboard">
+        <h1>Top Users</h1>
+        <table id="leaderboardTable">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>User</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic content will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="action-buttons">
+        <a href="index.html" class="button">Home</a>
+        <a href="dashboard.html" class="button">Dashboard</a>
+    </div>
+
+    <footer class="footer">
+        <p>Invite friends and earn more with ZapCash Lite 🚀</p>
+    </footer>
+
+    <script>
+        // Dummy leaderboard data
+        const leaderboardData = [
+            { rank: 1, user: 'User 1', points: 100 },
+            { rank: 2, user: 'User 2', points: 85 },
+            { rank: 3, user: 'User 3', points: 75 },
+            { rank: 4, user: 'User 4', points: 65 },
+            { rank: 5, user: 'User 5', points: 55 },
+        ];
+
+        // Dynamically generate leaderboard table
+        const leaderboardTable = document.getElementById('leaderboardTable').getElementsByTagName('tbody')[0];
+        leaderboardData.forEach((user) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${user.rank}</td>
+                <td>${user.user}</td>
+                <td>${user.points}</td>
+            `;
+            leaderboardTable.appendChild(row);
+        });
+    </script>
+</body>
+</html>

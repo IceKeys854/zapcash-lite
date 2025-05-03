@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - ZapCash Lite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="header">
+    <h1>Your Dashboard</h1>
+  </header>
+
+  <div class="progress-container">
+    <h2><b>Your Progress</b></h2>
+    <div class="progress-bar" id="progress-bar"><b>0%</b></div>
+  </div>
+
+  <main class="container">
+    <h3 class="points">🎉 Your Points: <strong id="points">0</strong></h3>
+
+    <div id="task-container">
+      <!-- Tasks will be dynamically inserted here -->
+    </div>
+
+    <p id="no-tasks-message" style="display: none;"><b><i>Come back later for more tasks!</b></i></p>
+
+    <div class="action-buttons">
+      <a href="index.html" class="button">Home</a>
+      <a href="leaderboard.html" class="button">Leaderboard</a>
+      <a href="referral.html" class="button">Referral Page</a>
+      <a href="withdraw.html" class="button">Withdraw</a>
+      <button class="button" onclick="logout()">Logout</button>
+    </div>
+  </main>
+
+  <script>
+    // Initialize points and check if they are stored in localStorage
+    let points = parseInt(localStorage.getItem('points')) || 0; // Default to 0 if no saved points
+    const totalPoints = 100; // Total points needed for 100% progress
+    let completedTasks = JSON.parse(localStorage.getItem('completedTasks')) || []; // Track completed tasks
+
+    // Update points and progress bar on page load
+    updateProgress();
+
+    // Task data - You can add more tasks here
+    const tasks = [
+      { id: 1, title: "📷 Follow us on Instagram", reward: 1 },
+      { id: 2, title: "🎥 Watch a Video", reward: 2 },
+      { id: 3, title: "👍 Like and share a post", reward: 2 },
+      { id: 4, title: "🎥 Watch a short video", reward: 1 },
+      { id: 5, title: "💬 Comment on a post", reward: 1 },
+      { id: 6, title: "📲 Join a Telegram group", reward: 2 },
+      { id: 7, title: "🎵 Subscribe to a TikTok channel", reward: 2 },
+      { id: 8, title: "📥 Download and review an app", reward: 1 },
+      { id: 9, title: "👥 Refer a friend", reward: 3 },
+      { id: 10, title: "🏆 Complete a challenge", reward: 2 },
+      { id: 11, title: "🌐 Visit a website", reward: 1 },
+      { id: 12, title: "🔗 Join a WhatsApp channel", reward: 2 },
+      { id: 13, title: "👥 Join a WhatsApp group", reward: 2 },
+      { id: 14, title: "📷 Follow an Instagram page", reward: 1 }
+    ];
+
+    // Insert tasks into the page
+    function loadTasks() {
+      const taskContainer = document.getElementById('task-container');
+      taskContainer.innerHTML = ''; // Clear previous tasks
+
+      // Filter out completed tasks
+      const remainingTasks = tasks.filter(task => !completedTasks.includes(task.id));
+
+      if (remainingTasks.length === 0) {
+        document.getElementById('no-tasks-message').style.display = 'block'; // Show "Come back later" message
+      } else {
+        document.getElementById('no-tasks-message').style.display = 'none'; // Hide message if there are tasks
+        remainingTasks.forEach(task => {
+          const taskCard = document.createElement('div');
+          taskCard.classList.add('task-card');
+          taskCard.setAttribute('id', `task-${task.id}`);
+
+          taskCard.innerHTML = `
+            <h4>${task.title}</h4>
+            <p>Reward: ${task.reward} points</p>
+            <button class="button" onclick="markTaskAsDone(${task.id}, ${task.reward})">Mark as Done</button>
+          `;
+
+          taskContainer.appendChild(taskCard);
+        });
+      }
+    }
+
+    // Function to mark task as done and update points and progress
+    function markTaskAsDone(taskId, pointsEarned) {
+      // Update points
+      points += pointsEarned;
+      localStorage.setItem('points', points); // Save points to localStorage
+
+      // Update points display
+      document.getElementById('points').textContent = points;
+
+      // Update progress bar
+      updateProgress();
+
+      // Mark task as completed and save it to localStorage
+      completedTasks.push(taskId);
+      localStorage.setItem('completedTasks', JSON.stringify(completedTasks));
+
+      // Remove the completed task from the page
+      const taskCard = document.getElementById(`task-${taskId}`);
+      taskCard.style.display = 'none'; // Hide the completed task
+
+      // Add a success message to the task button
+      const taskButton = taskCard.querySelector('button');
+      taskButton.classList.add('success');
+      taskButton.textContent = 'Task Completed!';
+
+      // Check if there are any remaining tasks to show
+      setTimeout(() => {
+        loadTasks(); // Reload tasks after a short delay to show the next one
+      }, 1000); // Delay of 1 second before showing the next task
+    }
+
+    // Function to update progress bar
+    function updateProgress() {
+      const progressPercentage = Math.min((points / totalPoints) * 100, 100); // Ensure progress doesn't exceed 100%
+      const progressBar = document.getElementById('progress-bar');
+      progressBar.style.width = `${progressPercentage}%`;
+      progressBar.innerHTML = `<b>${progressPercentage.toFixed(0)}%</b>`;
+    }
+
+    // Function to log out and reset points
+    function logout() {
+      if (confirm("Are you sure you want to log out?")) {
+        localStorage.removeItem('points'); // Remove points from localStorage
+        localStorage.removeItem('completedTasks'); // Clear completed tasks from localStorage
+        alert("You have logged out successfully.");
+        // Optionally, redirect to login page or homepage
+        window.location.href = "index.html"; // Change to your desired logout redirect page
+      }
+    }
+
+    // Load tasks when the page loads
+    window.onload = loadTasks;
+  </script>
+
+  <footer class="footer">
+    <p>© 2025 ZapCash Lite. Keep earning 💰</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,544 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+  line-height: 1.6;
+}
+
+.header {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 1.8rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.container {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.button {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 12px 24px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #3e9440;
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.points {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+}
+
+.task-card {
+  background-color: #fefefe;
+  border: 1px solid #ddd;
+  border-left: 5px solid #4CAF50;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  text-align: left;
+  transition: transform 0.2s ease;
+}
+
+.task-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.task-card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.action-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ref-text {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.ref-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
+}
+
+.ref-box input {
+  font-size: 1.1rem;
+  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.withdraw-text {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.withdraw-form {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.withdraw-form input,
+.withdraw-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.withdraw-form button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.withdraw-form button:hover {
+  background-color: #3e9440;
+}
+
+/* Smooth transition for all buttons */
+.button {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  background-color: #45a049;
+}
+
+/* Smooth page fade-in transition */
+body {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.task, .container, .header {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Progress bar container */
+.progress-container {
+  margin-top: 20px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar div {
+  height: 100%;
+  background-color: #4CAF50;
+  width: 0; /* Will be updated dynamically */
+  transition: width 0.5s ease;
+}
+
+.success {
+  background-color: #76D7C4; /* Change to green or any color for completed task */
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .task-card {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .task {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.hamburger-menu {
+  font-size: 30px;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: block;
+  }
+
+  #nav-menu {
+    display: none;
+    background-color: #4CAF50;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  #nav-menu a {
+    display: block;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+  }
+
+  #nav-menu a:hover {
+    background-color: #45a049;
+  }
+}
+
+/* Success animation */
+.success {
+  animation: successAnimation 0.5s ease-in-out;
+}
+
+@keyframes successAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Resetting some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body and overall layout */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header Styling */
+.header {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+/* Leaderboard Styling */
+.leaderboard {
+  background-color: white;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.leaderboard h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #4CAF50;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 12px;
+  text-align: left;
+}
+
+table th {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+}
+
+table td {
+  background-color: #fafafa;
+  border-bottom: 1px solid #ddd;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #e1f7e1;
+}
+
+/* Action Buttons */
+.action-buttons {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.action-buttons .button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin: 0 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.action-buttons .button:hover {
+  background-color: #45a049;
+}
+
+/* Footer Styling */
+.footer {
+  background-color: #4CAF50;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .leaderboard {
+    padding: 1.5rem;
+  }
+
+  table th, table td {
+    padding: 10px;
+  }
+
+  .action-buttons .button {
+    padding: 8px 16px;
+  }
+
+  .footer {
+    font-size: 0.9rem;
+  }
+}
+
+/* Header */
+.header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+  font-size: 24px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background: #eee;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Navigation Menu */
+#nav-menu {
+  display: none;
+  flex-direction: column;
+  background: #f0f0f0;
+  padding: 10px 20px;
+}
+
+#nav-menu a {
+  margin: 10px 0;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f5fff5;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.hero .button {
+  display: inline-block;
+  margin: 10px 10px;
+  padding: 12px 25px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.hero .button:hover {
+  background-color: #43a047;
+}
+
+/* Auth Container (Signup & Login) */
+.auth-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.auth-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.auth-form .button {
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #f1f1f1;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .auth-container {
+    margin: 30px 20px;
+  }
+}

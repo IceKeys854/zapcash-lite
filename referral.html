@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Referral - ZapCash Lite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="header">
+    <h1>Referral Program</h1>
+  </header>
+
+  <main class="container">
+    <p class="ref-text">Share your referral code with friends and earn points!</p>
+    
+    <div class="ref-box">
+      <input type="text" id="referralCode" value="ZAP12345" readonly />
+      <button class="button" onclick="copyCode()">📋 Copy Code</button>
+    </div>
+
+    <div class="action-buttons">
+      <a href="dashboard.html" class="button">⬅ Back to Dashboard</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>Invite friends and earn more with ZapCash Lite 🚀</p>
+  </footer>
+
+  <script>
+    function copyCode() {
+      const input = document.getElementById('referralCode');
+      input.select();
+      input.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      alert("✅ Referral code copied!");
+    }
+  </script>
+</body>
+</html>
